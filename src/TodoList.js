@@ -5,15 +5,8 @@ function TodoList({ todos, handleComplete }) {
     <div>
       {todos.map((todo) => (
         <div key={todo.id}>
-          <span
-            style={{
-              textDecoration: todo.completed
-                ? "line-through"
-                : "none",
-              marginRight: "10px"
-            }}
-          >
-            {todo.text}
+          <span>
+            {todo.text} - {todo.completed ? "Completed" : "Pending"}
           </span>
 
           {!todo.completed && (
@@ -21,8 +14,6 @@ function TodoList({ todos, handleComplete }) {
               Complete
             </button>
           )}
-
-          {todo.completed && <span> Completed</span>}
         </div>
       ))}
     </div>
