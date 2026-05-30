@@ -5,11 +5,11 @@ function TodoList({ todos, handleComplete }) {
     <div>
       {todos.map((todo) => (
         <div key={todo.id}>
-          <span>
-            {todo.text} - {todo.completed ? "Completed" : "Pending"}
-          </span>
+          <span>{todo.text}</span>
 
-          {!todo.completed && (
+          {todo.completed ? (
+            <span> Completed</span>
+          ) : (
             <button onClick={() => handleComplete(todo.id)}>
               Complete
             </button>
