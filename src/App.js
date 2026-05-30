@@ -9,17 +9,21 @@ function App() {
   ]);
 
   const handleComplete = (id) => {
-    const updatedTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, completed: true } : todo
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id
+          ? { ...todo, completed: true }
+          : todo
+      )
     );
-
-    setTodos(updatedTodos);
   };
 
   return (
     <div>
-      <h1>Todo List</h1>
-      <TodoList todos={todos} handleComplete={handleComplete} />
+      <TodoList
+        todos={todos}
+        handleComplete={handleComplete}
+      />
     </div>
   );
 }
