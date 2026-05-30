@@ -7,13 +7,13 @@ function TodoList({ todos, handleComplete }) {
         <div key={todo.id}>
           <span>{todo.text}</span>
 
-          {todo.completed ? (
-            <span> Completed</span>
-          ) : (
+          {!todo.completed && (
             <button onClick={() => handleComplete(todo.id)}>
-              Complete
+              complete
             </button>
           )}
+
+          {todo.completed && <span> completed</span>}
         </div>
       ))}
     </div>
