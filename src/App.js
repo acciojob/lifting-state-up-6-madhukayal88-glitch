@@ -1,31 +1,32 @@
+// src/App.js
 import React, { useState } from "react";
 import TodoList from "./TodoList";
 
-function App() {
+export default function App() {
   const [todos, setTodos] = useState([
-    { id: 1, text: "Learn React", completed: false },
-    { id: 2, text: "Build Project", completed: false },
-    { id: 3, text: "Practice Coding", completed: false },
+    { id: 1, text: "Buy groceries", completed: false },
+    { id: 2, text: "Walk the dog", completed: true },
+    { id: 3, text: "Read a chapter", completed: false },
   ]);
 
+  // Mark as completed (immutable update)
   const handleComplete = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id
-          ? { ...todo, completed: true }
-          : todo
-      )
+    setTodos(prev =>
+      prev.map(t => (t.id === id ? { ...t, completed: true } : t))
+    );
+  };
+
+  // If you want toggle behavior instead of only marking true
+  const handleToggle = (id) => {
+    setTodos(prev =>
+      prev.map(t => (t.id === id ? { ...t, completed: !t.completed } : t))
     );
   };
 
   return (
-    <div>
-      <TodoList
-        todos={todos}
-        handleComplete={handleComplete}
-      />
+    <div style={{ padding: 20 }}>
+      <h2>Todo List</h2>
+      <TodoList todos={todos} handleComplete={handleComplete} handleToggle={handleToggle} />
     </div>
   );
 }
-
-export default App;
