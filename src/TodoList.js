@@ -1,39 +1,23 @@
-// src/TodoList.js
 import React from "react";
-import PropTypes from "prop-types";
 
-export default function TodoList({ todos, handleComplete, handleToggle }) {
-  if (!todos || todos.length === 0) return <p>No todos yet.</p>;
-
+function TodoList({ todos, handleComplete }) {
   return (
-    <ul>
-      {todos.map(todo => (
-        <li key={todo.id} style={{ marginBottom: 8 }}>
-          <span style={{ textDecoration: todo.completed ? "line-through" : "none", marginRight: 12 }}>
-            {todo.text}
-          </span>
+    <div>
+      <h2>Child Component</h2>
 
-          {/* If completed show label else show Complete button */}
-          {todo.completed ? (
-            <span style={{ color: "green", fontWeight: 600 }}>Completed</span>
-          ) : (
-            <button onClick={() => handleComplete(todo.id)}>Complete</button>
-          )}
+      {todos.map((todo) => (
+        <div key={todo.id}>
+          <span>{todo.text}</span>
 
-          {/* Optional toggle button if you passed handleToggle */}
-          {handleToggle && (
-            <button style={{ marginLeft: 8 }} onClick={() => handleToggle(todo.id)}>
-              Toggle
+          {!todo.completed && (
+            <button onClick={() => handleComplete(todo.id)}>
+              Complete
             </button>
           )}
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
 
-TodoList.propTypes = {
-  todos: PropTypes.array.isRequired,
-  handleComplete: PropTypes.func.isRequired,
-  handleToggle: PropTypes.func,
-};
+export default TodoList;
