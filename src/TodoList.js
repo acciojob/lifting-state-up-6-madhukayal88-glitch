@@ -5,17 +5,21 @@ function TodoList({ todos, handleComplete }) {
     <div>
       <h2>Child Component</h2>
 
-      {todos.map((todo) => (
-        <div key={todo.id}>
-          <span>{todo.text}</span>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            {todo.text}
 
-          {!todo.completed && (
-            <button onClick={() => handleComplete(todo.id)}>
-              Complete
-            </button>
-          )}
-        </div>
-      ))}
+            {!todo.completed && (
+              <button
+                onClick={() => handleComplete(todo.id)}
+              >
+                Complete
+              </button>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
