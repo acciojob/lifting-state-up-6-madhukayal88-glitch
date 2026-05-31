@@ -11,9 +11,7 @@ function TodoList({ todos, handleComplete }) {
             {todo.text}
 
             {!todo.completed && (
-              <button
-                onClick={() => handleComplete(todo.id)}
-              >
+              <button onClick={() => handleComplete(todo.id)}>
                 Complete
               </button>
             )}
