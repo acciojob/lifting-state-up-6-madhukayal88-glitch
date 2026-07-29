@@ -92,8 +92,6 @@ function App() {
           cursor: 'pointer',
           transition: 'all 0.2s ease'
         }}
-        onMouseOver={(e) => e.target.style.background = '#5a6268'}
-        onMouseOut={(e) => e.target.style.background = '#6c757d'}
       >
         Reset Selection
       </button>
